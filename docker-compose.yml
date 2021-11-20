@@ -1,19 +1,8 @@
-server:
-  image: python:3
-  working_dir: /mnt
-  volumes:
-    - .:/mnt
-  links:
-   - db
-  ports:
-    - '5000:5000'
-  environment:
-    # PYTHONPATH: $PYTHONPATH:src
-    PYTHONUSERBASE: /mnt/vendor
-    IMPORT_PATH: /mnt/test/fixture
-  command: python src/server.py
-
-db:
-  image: postgres:9.4
+my_pgsql:
+  image: gitpod/workspace-postgres
   volumes:
     - ${PWD}/data:/var/lib/postgresql/data
+  environment:
+    - "POSTGRES_PASSWORD=password"
+    - "POSTGRES_HOST_AUTH_METHOD=trust"
+  container_name: gaspardloriot
