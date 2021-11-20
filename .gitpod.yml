@@ -3,4 +3,4 @@ image: gitpod/workspace-postgres
 
 tasks:
   - init: pipenv shell && pipenv install
-    command: python
+    command: python app.py
